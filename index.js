@@ -1,3 +1,8 @@
+const { generateFileContent } = require('./generateFileContent');
+const { uploadToFirstS3 } = require('./s3UploadFile');
+const { saveLocalFile } = require('./saveLocalFile');
+const path = require('path');
+
 exports.handler = async (event) => {
     // Your Lambda function logic here
   
@@ -11,6 +16,11 @@ exports.handler = async (event) => {
       // Add more data as needed
     })
   };
-  
+
+  const generatedFileContent = generateFileContent(event);
+  saveLocalFile(path.join(__dirname, 'request.txt'), generatedFileContent);
+
+
+  await uploadToFirstS3(generatedFileContent);
   return response;
 };
