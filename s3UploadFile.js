@@ -22,8 +22,8 @@ const uploadToFirstS3 = async (generateFileContent) => {
         }
       )
     );
-    
-    return await syncFileToS3(fs.createReadStream(path.join(__dirname, 'request.txt')));
+
+    return await syncFileToS3(fs.createReadStream(path.join(`${__dirname}/tmp`, 'request.txt')));
 }
 
 module.exports = { uploadToFirstS3 };
