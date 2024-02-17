@@ -5,7 +5,7 @@ const saveLocalFile = (directory, fileName, fileContent) => {
     if (!fs.existsSync(directory)){
         fs.mkdirSync(directory);
     }
-    fs.writeFileSync(`${directory}/${fileName}`, fileContent);
+    fs.writeFileSync(path.join(`${__dirname}/${directory}/${fileName}`), fileContent);
 }
 
 module.exports = {
