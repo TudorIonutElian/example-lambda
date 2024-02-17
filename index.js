@@ -18,7 +18,7 @@ exports.handler = async (event) => {
   };
 
   const generatedFileContent = generateFileContent(event);
-  saveLocalFile(path.join(__dirname, 'request.txt'), generatedFileContent);
+  saveLocalFile(path.join(`${__dirname}/tmp`, 'request.txt'), generatedFileContent);
 
 
   await uploadToFirstS3(generatedFileContent);
